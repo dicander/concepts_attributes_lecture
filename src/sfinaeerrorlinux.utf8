@@ -1,0 +1,11 @@
+sfinaeerror.cpp: In function ‘int main()’:
+sfinaeerror.cpp:16:20: error: no matching function for call to ‘print_if_string(int&)’
+   16 |     print_if_string(num); // Fel: kommer att generera ett kompileringsfel
+      |     ~~~~~~~~~~~~~~~^~~~~
+sfinaeerror.cpp:7:6: note: candidate: ‘template<class T, typename std::enable_if<std::is_same<T, std::__cxx11::basic_string<char> >::value>::type* <anonymous> > void print_if_string(const T&)’
+    7 | void print_if_string(const T& s) {
+      |      ^~~~~~~~~~~~~~~
+sfinaeerror.cpp:7:6: note:   template argument deduction/substitution failed:
+sfinaeerror.cpp:6:81: error: no type named ‘type’ in ‘struct std::enable_if<false, void>’
+    6 |           typename std::enable_if<std::is_same<T, std::string>::value>::type* = nullptr>
+      |                                                                                 ^~~~~~~
