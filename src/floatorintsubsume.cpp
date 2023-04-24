@@ -16,6 +16,12 @@ void f(T a) {
 }
 
 template<typename T>
+    requires floating_point<T> && destructible<T>
+void f(T a) {
+    std::cout << "We got a float, and it can be destroyed! f(" << a << ")\n";
+}
+
+template<typename T>
     requires integral<T>
 void f(T a) {
     std::cout << "We got an integral! f(" << a << ")\n";
