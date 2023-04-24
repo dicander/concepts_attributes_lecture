@@ -1,0 +1,17 @@
+withconcepts.cpp: In function ‘int main()’:
+withconcepts.cpp:18:22: error: no matching function for call to ‘add(MyClass&, MyClass&)’
+   18 |     auto result = add(a, b); // Felaktig användning av add med icke-numeriska typer
+      |                   ~~~^~~~~~
+withconcepts.cpp:10:3: note: candidate: ‘template<class T>  requires  Addable<T> T add(T, T)’
+   10 | T add(T a, T b) {
+      |   ^~~
+withconcepts.cpp:10:3: note:   template argument deduction/substitution failed:
+withconcepts.cpp:10:3: note: constraints not satisfied
+withconcepts.cpp: In substitution of ‘template<class T>  requires  Addable<T> T add(T, T) [with T = MyClass]’:
+withconcepts.cpp:18:22:   required from here
+withconcepts.cpp:5:9:   required for the satisfaction of ‘Addable<T>’ [with T = MyClass]
+withconcepts.cpp:5:19:   in requirements with ‘T a’, ‘T b’ [with T = MyClass]
+withconcepts.cpp:6:9: note: the required expression ‘(a + b)’ is invalid, because
+    6 |     { a + b } -> std::same_as<T>;
+      |       ~~^~~
+withconcepts.cpp:6:9: error: no match for ‘operator+’ (operand types are ‘MyClass’ and ‘MyClass’)
