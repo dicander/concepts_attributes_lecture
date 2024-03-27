@@ -6,7 +6,7 @@ using namespace std;
 template<typename T>
     requires floating_point<T> || integral<T>
 void f(T a) {
-    std::cout << "f(" << a << ")\n";
+    std::cout << "f(" << a << ")" << std::endl;
 }
 
 
