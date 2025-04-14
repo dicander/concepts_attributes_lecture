@@ -1,7 +1,7 @@
 #include <iostream>
 #include <concepts>
 
-using namespace std;
+//using namespace std;
 
 //create a concept that tests if a type implements less than
 
@@ -19,6 +19,7 @@ concept LessThanComparable2 = requires (T a, T b) {
     // What it does express is that the operator is defined for the type T.
 };
 
+
 // Now we try to use both and see what happens. Naturally this does not do what we want since the last one does not
 // either.
 
@@ -30,10 +31,12 @@ concept LessThanComparable3 = requires (T a, T b) {
 
 // Write a main function that uses all three concepts, once for each.
 int main() {
-    int a = 3, b = 5;
+    std::string a = "Hello";
+    std::string b = "World";
+    //int result = 1;
     LessThanComparable auto result = a < b;
     //LessThanComparable2 auto result2 = a < b;
     //LessThanComparable3 auto result3 = a < b;
-    cout << result << endl;   
+    std::cout << result << std::endl;   
 
 }
