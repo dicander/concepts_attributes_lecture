@@ -21,5 +21,10 @@ int main() {
     print_values(arr, arr + 5);
     print_values(&vec[0], &vec[0] + vec.size());
     print_values(vec.begin(), vec.end());
+    int* v = new int[5];
+    for (int i = 1; i <= 5; ++i) {
+        v[i-1] = i;
+    }
+    print_values(v, v + 5);
 
 }
