@@ -16,18 +16,23 @@ concept LessThanComparable = requires (T a, T b) {
 template <typename T>
 concept LessThanComparable2 = requires (T a, T b) {
     { operator<(a,b) } -> std::same_as<bool>; // This does not express the same thing as the previous one
-    // What it does express is that the operator is defined for the type T.
+    // Only works if lt is defined (1) as a free function or
+    // (2) is a friend...
+    // And we do not have primitive types such as int or float that use assembly instructions instead of
+    // methods.
+    // In short, don't do this.
 };
 
 
-// Now we try to use both and see what happens. Naturally this does not do what we want since the last one does not
-// either.
+// Now we try to use both and see what happens.
 
 template <typename T>
 concept LessThanComparable3 = requires (T a, T b) {
     { a < b } -> std::same_as<bool>;
     { operator<(a,b) } -> std::same_as<bool>;
 };
+// Don't do this either. Even if the first one succeeds, for many types the second one won't.
+
 
 // Write a main function that uses all three concepts, once for each.
 int main() {
